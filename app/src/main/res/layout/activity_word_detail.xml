@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/LightCyan"
+    tools:context=".activity.WordDetailActivity">
+
+    <TextView
+        android:id="@+id/tv_key_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/key_and_its_type"
+        android:textColor="@color/MediumBlue"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/tv_traits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/traits"
+        android:textColor="@color/DeepPink"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:scrollbars="vertical"
+        android:id="@+id/tv_meaning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/meaning"
+        android:textColor="@color/BlueViolet"
+        android:textSize="@dimen/text_size" />
+</LinearLayout>
