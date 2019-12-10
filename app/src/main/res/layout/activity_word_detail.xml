@@ -6,8 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/LightCyan"
+    android:fitsSystemWindows="true"
     tools:context=".activity.WordDetailActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@color/dark_gray"
+        android:background="@color/LightBlue"/>
     <TextView
         android:id="@+id/tv_key_type"
         android:layout_width="match_parent"

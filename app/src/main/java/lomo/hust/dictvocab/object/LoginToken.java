@@ -14,6 +14,15 @@ public class LoginToken {
     @SerializedName("expires_at")
     @Expose
     private String expiresAt;
+    @SerializedName("errors")
+    @Expose
+    private Errors errors;
+    @SerializedName("message")
+    @Expose
+    private String message = "";
+    @SerializedName("success")
+    @Expose
+    private Boolean success;
 
     /**
      * No args constructor for use in serialization
@@ -33,6 +42,16 @@ public class LoginToken {
         this.accessToken = accessToken;
         this.tokenType = tokenType;
         this.expiresAt = expiresAt;
+    }
+
+    public LoginToken(String accessToken, String tokenType, String expiresAt, Errors errors, String message, Boolean success) {
+        super();
+        this.accessToken = accessToken;
+        this.tokenType = tokenType;
+        this.expiresAt = expiresAt;
+        this.errors = errors;
+        this.message = message;
+        this.success = success;
     }
 
     public String getAccessToken() {
@@ -59,4 +78,27 @@ public class LoginToken {
         this.expiresAt = expiresAt;
     }
 
+    public Errors getErrors() {
+        return errors;
+    }
+
+    public void setErrors(Errors errors) {
+        this.errors = errors;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Boolean getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Boolean success) {
+        this.success = success;
+    }
 }

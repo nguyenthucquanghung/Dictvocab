@@ -119,18 +119,9 @@ public class SearchFragment extends BaseFragment {
                 mWords.clear();
                 mWords = response.body();
                 if (mWords.size() == 0 && isSearchBehavior) {
-                    getActivity().runOnUiThread(new Runnable() {
-                        public void run() {
-                            try {
-                                Thread.sleep(2000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            Toast.makeText(getContext(),
-                                    "Cannot find this word!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
+                    Toast.makeText(getContext(),
+                            "Cannot find this word!", Toast.LENGTH_SHORT).show();
+                    tvAlt.setVisibility(View.VISIBLE);
                 }
                 searchView.hideProgress();
                 mWordAdapter.updateData(mWords);
@@ -140,17 +131,8 @@ public class SearchFragment extends BaseFragment {
             @Override
             public void onFailure(Call<List<Word>> call, Throwable t) {
                 if (isSearchBehavior) {
-                    getActivity().runOnUiThread(new Runnable() {
-                        public void run() {
-                            try {
-                                Thread.sleep(2000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            Toast.makeText(getContext(),
-                                    "Server error!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    Toast.makeText(getContext(),
+                            "Server error!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -167,8 +149,13 @@ public class SearchFragment extends BaseFragment {
                 Intent intent = new Intent(getActivity(), WordDetailActivity.class);
                 Word word = mWords.get(position);
                 String keyAndType = word.getKey();
-                if (!word.getType().equals(""))
-                    keyAndType += " (" + word.getType() + ")";
+                if (!word.getType().equals("")) {
+                    String type = word.getType().replaceAll("ừ", "ừ, ");
+                    int len = type.length();
+                    if (len > 0 && type.charAt(len - 1) == ' ')
+                        type = type.substring(0, len-2);
+                    keyAndType += " (" + type + ")";
+                }
                 StringBuilder traits = new StringBuilder();
                 for (String trait: word.getTrait())
                     traits.append(trait).append("\n");
@@ -179,6 +166,8 @@ public class SearchFragment extends BaseFragment {
                 String meaningList = meanings.toString();
 
                 intent.putExtra(Constant.KEY, keyAndType);
+                intent.putExtra(Constant.WORD_ID, word.getId());
+                intent.putExtra(Constant.WORD, word.getKey());
                 intent.putExtra(Constant.TRAITS, traitList);
                 intent.putExtra(Constant.MEANING, meaningList);
                 startActivity(intent);

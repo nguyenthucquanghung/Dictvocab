@@ -6,4 +6,58 @@
     android:background="@color/LightCyan"
     tools:context=".fragment.ProfileFragment">
 
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo" />
+
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_logo"
+            android:layout_margin="20dp"
+            android:background="@drawable/circle_bordered_rectangle"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp"
+            android:text="@string/email" />
+
+        <Button
+            android:id="@+id/btn_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_log_out"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/circle_bordered_rectangle"
+            android:text="@string/change_password"
+            android:textColor="@color/LightSlateGray" />
+
+        <Button
+            android:id="@+id/btn_log_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/circle_bordered_rectangle"
+            android:paddingVertical="15dp"
+            android:text="@string/log_out"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/Red" />
+    </RelativeLayout>
 </FrameLayout>
