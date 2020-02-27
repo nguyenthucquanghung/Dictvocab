@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
 import lomo.hust.dictvocab.R;
@@ -67,7 +68,7 @@ public class LoginActivity extends BaseActivity {
         Call<LoginToken> loginTokenCall = service.login(user);
         loginTokenCall.enqueue(new Callback<LoginToken>() {
             @Override
-            public void onResponse(Call<LoginToken> call, Response<LoginToken> response) {
+            public void onResponse(@NotNull Call<LoginToken> call, @NotNull Response<LoginToken> response) {
                 if (response.body() != null) {
                     if (response.body().getMessage().equals("")) {
                         Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_LONG).show();
@@ -76,6 +77,7 @@ public class LoginActivity extends BaseActivity {
                         SharedPreferencesSingleton.getInstance().put(Constant.USER_EMAIL, email);
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
+                        LoginActivity.this.finish();
                     } else {
                         Toast.makeText(LoginActivity.this, "Wrong password or the account is not exist!", Toast.LENGTH_SHORT).show();
                     }
@@ -85,7 +87,7 @@ public class LoginActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginToken> call, Throwable t) {
+            public void onFailure(@NotNull Call<LoginToken> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Server error!", Toast.LENGTH_LONG).show();
             }
         });

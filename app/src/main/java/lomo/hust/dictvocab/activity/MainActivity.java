@@ -41,6 +41,7 @@ public class MainActivity extends BaseActivity {
         viewPager = findViewById(R.id.view_pager);
     }
 
+
     @Override
     protected void setupUI() {
         final boolean isLoggedIn = SharedPreferencesSingleton.getInstance().get(Constant.LOG_IN_STATE, Boolean.class);

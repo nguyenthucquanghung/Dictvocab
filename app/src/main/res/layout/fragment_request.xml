@@ -20,7 +20,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <TextView
+        <Button
             android:layout_centerVertical="true"
             android:id="@+id/tv_username"
             android:layout_width="wrap_content"
@@ -29,7 +29,6 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/circle_solid_light_rectangle"
             android:paddingHorizontal="50dp"
-            android:paddingVertical="6dp"
             android:text="@string/log_in"
             android:textAlignment="center"
             android:textColor="@color/LightSlateGray"

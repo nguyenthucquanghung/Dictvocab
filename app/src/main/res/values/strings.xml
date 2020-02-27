@@ -37,4 +37,10 @@
     <string name="word">Word</string>
     <string name="hashtag">Hashtag</string>
     <string name="save">SAVE</string>
+    <string name="ocr">OCR</string>
+    <string name="camera">camera</string>
+    <string name="take_photo">TAKE PHOTO</string>
+    <string name="result">Result</string>
+    <string name="gallery">Gallery</string>
+    <string name="text">Text</string>
 </resources>

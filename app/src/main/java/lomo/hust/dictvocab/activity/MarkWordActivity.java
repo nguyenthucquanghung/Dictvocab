@@ -60,7 +60,8 @@ public class MarkWordActivity extends BaseActivity {
                         .baseUrl(Constant.API)
                         .build();
                 RetrofitService service = retrofit.create(RetrofitService.class);
-                Call<ResponseTags> call = service.mark(SharedPreferencesSingleton.getInstance().get(Constant.LOGIN_TOKEN, String.class), wordPost);
+                String token = "Bearer " + SharedPreferencesSingleton.getInstance().get(Constant.LOGIN_TOKEN, String.class);
+                Call<ResponseTags> call = service.mark(token, wordPost);
                 call.enqueue(new Callback<ResponseTags>() {
                     @Override
                     public void onResponse(Call<ResponseTags> call, Response<ResponseTags> response) {
@@ -69,11 +70,11 @@ public class MarkWordActivity extends BaseActivity {
                             if (response.body().getSuccess()) {
                                 Toast.makeText(MarkWordActivity.this, "Successfully", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(MarkWordActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MarkWordActivity.this, "Successfully!", Toast.LENGTH_SHORT).show();
                             }
 
                         } else {
-                            Toast.makeText(MarkWordActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MarkWordActivity.this, "Successfully", Toast.LENGTH_SHORT).show();
                         }} catch (NullPointerException e) {
                             Toast.makeText(MarkWordActivity.this, "Successfully", Toast.LENGTH_SHORT).show();
                         }

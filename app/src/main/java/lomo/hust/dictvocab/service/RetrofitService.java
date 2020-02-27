@@ -23,14 +23,24 @@ import rx.Observable;
 public interface RetrofitService {
     @POST("/api/search")
     Call<List<Word>> search(@Query("lex") String searchedWord);
+
+
+
     @GET("/api/e_search?")
     Call<List<Word>> getAutoComplete(@Query("q") String currentSearch);
+
+
+
     @Headers({
             "Content-Type:application/json",
             "X-Requested-With:XMLHttpRequest"
     })
     @POST("api/auth/login")
     Call<LoginToken> login(@Body LoginUser user);
+
+
+
+
     @Headers({
             "Content-Type:application/json",
             "X-Requested-With:XMLHttpRequest"
@@ -39,13 +49,14 @@ public interface RetrofitService {
     Call<LoginToken> signup(@Body SignupUser user);
     @GET("api/auth/logout")
     Call<LoginToken> logout(@Header("Authorization") String authHeader);
+
     @GET("api/user_word/show_list")
     Call<ResponseTags> getTags(@Header("Authorization") String authHeader);
+
     @POST("api/user_word/show_list_word")
     Call<List<String>> getWords(@Header("Authorization") String authHeader, @Body WordPost wordPost);
-    @Headers({
-            "Content-Type:application/x-www-form-urlencoded",
-    })
+
     @POST("api/user_word/edit")
-    Call<ResponseTags> mark(@Header("Authorization") String authHeader, @Body WordPost wordPost);
+    Call<ResponseTags> mark(@Header("Authorization") String authHeader,@Body WordPost wordPost);
+
 }

@@ -2,6 +2,7 @@ package lomo.hust.dictvocab.fragment;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import lomo.hust.dictvocab.R;
@@ -9,7 +10,7 @@ import lomo.hust.dictvocab.activity.LoginActivity;
 import lomo.hust.dictvocab.base.BaseFragment;
 
 public class RequestFragment extends BaseFragment {
-    private TextView tvLogin;
+    private Button tvLogin;
     @Override
     protected void setupUI() {
         tvLogin.setOnClickListener(new View.OnClickListener() {

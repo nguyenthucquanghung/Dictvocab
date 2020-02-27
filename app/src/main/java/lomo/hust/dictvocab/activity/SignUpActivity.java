@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.security.Signature;
 
 import lomo.hust.dictvocab.R;
@@ -53,7 +55,7 @@ public class SignUpActivity extends BaseActivity {
                             Toast.LENGTH_SHORT).show();
                 } else if (!isEmailValid(etEmail.getText().toString())) {
                     Toast.makeText(SignUpActivity.this,
-                            "Please enter an valid email",
+                            "Please enter an valid email!",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     createAccount(
@@ -78,7 +80,7 @@ public class SignUpActivity extends BaseActivity {
         Call<LoginToken> tokenCall = service.signup(user);
         tokenCall.enqueue(new Callback<LoginToken>() {
             @Override
-            public void onResponse(Call<LoginToken> call, Response<LoginToken> response) {
+            public void onResponse(@NotNull Call<LoginToken> call, @NotNull Response<LoginToken> response) {
                 Toast.makeText(SignUpActivity.this,
                         "Sign up successfully!\nYour account is now available!",
                         Toast.LENGTH_SHORT).show();
@@ -88,7 +90,7 @@ public class SignUpActivity extends BaseActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginToken> call, Throwable t) {
+            public void onFailure(@NotNull Call<LoginToken> call, @NotNull Throwable t) {
 
             }
         });
